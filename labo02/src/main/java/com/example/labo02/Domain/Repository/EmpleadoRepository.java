@@ -1,11 +1,19 @@
 package com.example.labo02.Domain.Repository;
 
 import com.example.labo02.Domain.Entities.Empleado;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import jakarta.transaction.Transactional;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
+import java.util.List;
 import java.util.UUID;
 
-@Repository
-public interface EmpleadoRepository extends JpaRepository<Empleado, UUID> {
+@Transactional
+public interface EmpleadoRepository extends CrudRepository<Empleado, UUID> {
+
+    Empleado findByEmail(String email);
+
+    @Query("SELECT e FROM Empleado e WHERE e.departamento.idDepartamento = :idDepto")
+    List<Empleado> findByDepartamentoId(@Param("idDepto") UUID idDepartamento);
 }

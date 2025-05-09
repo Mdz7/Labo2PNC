@@ -1,11 +1,13 @@
 package com.example.labo02.Domain.Repository;
 
 import com.example.labo02.Domain.Entities.Categoria;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import jakarta.transaction.Transactional;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.UUID;
 
-@Repository
-public interface CategoriaRepository extends JpaRepository<Categoria, UUID> {
+@Transactional
+public interface CategoriaRepository extends CrudRepository<Categoria, UUID> {
+
+    Categoria findByNombre(String nombre);
 }

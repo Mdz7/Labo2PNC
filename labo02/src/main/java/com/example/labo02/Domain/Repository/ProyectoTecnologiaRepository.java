@@ -1,11 +1,14 @@
 package com.example.labo02.Domain.Repository;
 
 import com.example.labo02.Domain.Entities.ProyectoTecnologia;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import jakarta.transaction.Transactional;
+import org.springframework.data.repository.CrudRepository;
 
+import java.util.List;
 import java.util.UUID;
 
-@Repository
-public interface ProyectoTecnologiaRepository extends JpaRepository<ProyectoTecnologia, UUID> {
+@Transactional
+public interface ProyectoTecnologiaRepository extends CrudRepository<ProyectoTecnologia, UUID> {
+
+    List<ProyectoTecnologia> findByProyectoIdProyecto(UUID idProyecto);
 }
