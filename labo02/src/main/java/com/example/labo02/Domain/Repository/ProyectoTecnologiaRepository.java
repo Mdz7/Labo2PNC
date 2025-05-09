@@ -1,4 +1,14 @@
 package com.example.labo02.Domain.Repository;
 
-public class ProyectoTecnologiaRepository {
+import com.example.labo02.Domain.Entities.ProyectoTecnologia;
+import jakarta.transaction.Transactional;
+import org.springframework.data.repository.CrudRepository;
+
+import java.util.List;
+import java.util.UUID;
+
+@Transactional
+public interface ProyectoTecnologiaRepository extends CrudRepository<ProyectoTecnologia, UUID> {
+
+    List<ProyectoTecnologia> findByProyectoIdProyecto(UUID idProyecto);
 }

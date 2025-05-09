@@ -1,11 +1,14 @@
 package com.example.labo02.Domain.Repository;
 
 import com.example.labo02.Domain.Entities.EmpleadoMentor;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import jakarta.transaction.Transactional;
+import org.springframework.data.repository.CrudRepository;
 
+import java.util.List;
 import java.util.UUID;
 
-@Repository
-public interface EmpleadoMentorRepository extends JpaRepository<EmpleadoMentor, UUID> {
+@Transactional
+public interface EmpleadoMentorRepository extends CrudRepository<EmpleadoMentor, UUID> {
+
+    List<EmpleadoMentor> findByMentorIdEmpleado(UUID idMentor);
 }
