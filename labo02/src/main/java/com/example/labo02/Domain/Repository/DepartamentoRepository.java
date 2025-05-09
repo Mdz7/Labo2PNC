@@ -1,11 +1,13 @@
 package com.example.labo02.Domain.Repository;
 
 import com.example.labo02.Domain.Entities.Departamento;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import jakarta.transaction.Transactional;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.UUID;
 
-@Repository
-public interface DepartamentoRepository extends JpaRepository<Departamento, UUID> {
+@Transactional
+public interface DepartamentoRepository extends CrudRepository<Departamento, UUID> {
+
+    Departamento findByNombre(String nombre);
 }
