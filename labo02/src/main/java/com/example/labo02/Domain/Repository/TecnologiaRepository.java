@@ -1,4 +1,11 @@
 package com.example.labo02.Domain.Repository;
 
-public class TecnologiaRepository {
+import com.example.labo02.Domain.Entities.Tecnologia;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.UUID;
+
+@Repository
+public interface TecnologiaRepository extends JpaRepository<Tecnologia, UUID> {
 }
